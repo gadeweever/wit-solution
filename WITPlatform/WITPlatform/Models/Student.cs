@@ -14,11 +14,9 @@ namespace WITPlatform.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
 
+        public virtual ICollection<ACTGrade> ACTGrades { get; set; }
+
         
-    }
-    public class StudentDBContext : DbContext
-    {
-        public DbSet<Student> Students { get; set; }
     }
 
 }
