@@ -27,9 +27,6 @@ namespace WITPlatform.Controllers
             return View();
         }
 
-        public ActionResult Students()
-        {
-            return View();
-        }
+
     }
 }
