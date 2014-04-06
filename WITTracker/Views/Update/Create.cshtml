@@ -1,13 +1,19 @@
 ﻿@model WITTracker.Models.Update
 
-@{
+@if(!Request.IsAuthenticated)
+{
+    Html.RenderAction("Login", "Account", null);
+}
+else
+{
+{
     ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
@@ -31,21 +37,21 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TimePosted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TimePosted, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TimePosted, "", new { @class = "text-danger" })
-            </div>
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.TimePosted, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TimePosted, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TimePosted, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        @*<!--<div class="form-group">
-            @Html.LabelFor(model => model.TeacherID, "TeacherID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("TeacherID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TeacherID, "", new { @class = "text-danger" })
-            </div>
-        </div>-->*@
+    <!--<div class="form-group">
+        @Html.LabelFor(model => model.TeacherID, "TeacherID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TeacherID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TeacherID, "", new { @class = "text-danger" })
+        </div>
+    </div>-->*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -58,6 +64,7 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

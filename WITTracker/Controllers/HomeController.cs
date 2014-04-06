@@ -14,7 +14,10 @@ namespace WITTracker.Controllers
         public ActionResult Index()
         {
             var updates = db.Updates;
-            return View(updates.ToList().Take(3));
+            if (updates.ToList().Count <= 3)
+                return View(updates.ToList());
+            else
+                return View(updates.ToList().GetRange(updates.ToList().Count-3, 3));
 
 
         }
