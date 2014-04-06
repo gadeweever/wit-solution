@@ -12,7 +12,12 @@ namespace WITTracker.Models
     {
 
         public int ID { get; set; }
+        [Display(Name = "First Name")]
+        [DataType(DataType.Text)]
         public String FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        [DataType(DataType.Text)]
         public String LastName { get; set; }
         public int TeacherID { get; set; }
 

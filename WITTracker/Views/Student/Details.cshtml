@@ -11,14 +11,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Teacher.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Teacher.FirstName)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
@@ -32,6 +24,37 @@
 
         <dd>
             @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+           Teacher
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.FirstName) @Html.DisplayFor(model => model.Teacher.LastName)
+        </dd>
+
+        <dt>
+            Current Grades
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Subject</th>
+                    <th>Score</th>
+                </tr>
+                @foreach (var item in Model.Grades)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GradeSubject.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Score)
+                        </td>
+                    </tr>
+                }
+            </table>
         </dd>
 
     </dl>

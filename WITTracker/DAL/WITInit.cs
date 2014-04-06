@@ -52,10 +52,10 @@ namespace WITTracker.DAL
             {
                 new Teacher{FirstName = "Gamal",LastName = "DeWeever", 
                     Email = "gadeweever@uchicago.edu",SubjectID = 2, BuildingID = 2 },
-                new Teacher{FirstName = "Martin",LastName = "Schray", 
-                    Email = "mschray@microsoft.com",SubjectID = 6, BuildingID = 1 },
+                new Teacher{FirstName = "Pablo",LastName = "Picasso", 
+                    Email = "bestartist1900s@microsoft.com",SubjectID = 6, BuildingID = 1 },
                 new Teacher{FirstName = "Microsoft",LastName = "Sam", 
-                    Email = "gadeweever@uchicago.edu",SubjectID = 5, BuildingID = 3 }
+                    Email = "mrmonotone@uchicago.edu",SubjectID = 5, BuildingID = 3 }
             };
             teachers.ForEach(t => context.Teachers.Add(t));
             context.SaveChanges();
@@ -63,8 +63,8 @@ namespace WITTracker.DAL
             var students = new List<Student>
             {
                 new Student{FirstName = "Steve", LastName = "Ballmer",TeacherID = 1},
-                new Student{FirstName = "Jill", LastName = "Mooney", TeacherID = 3},
-                new Student {FirstName = "David", LastName = "Giard", TeacherID = 1}
+                new Student{FirstName = "Sebastian", LastName = "Bach", TeacherID = 3},
+                new Student {FirstName = "Johann", LastName = "Hassler", TeacherID = 1}
 
             };
             students.ForEach(s => context.Students.Add(s));
