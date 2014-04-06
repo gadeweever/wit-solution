@@ -4560,7 +4560,7 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
     line-height: 2.1428571435;
     background-repeat:no-repeat;
     color: inherit;
-    background-color: #ccc;
+    background-color: #f6f0f0;
     
 }
     .jumbotron3 h1 {
@@ -4570,6 +4570,7 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
 
     .jumbotron3 p {
         line-height: 1.4;
+        font-size: 14px;
     }
 
 

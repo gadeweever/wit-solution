@@ -14,7 +14,7 @@ namespace WITTracker.Controllers
         public ActionResult Index()
         {
             var updates = db.Updates;
-            return View(updates.ToList());
+            return View(updates.ToList().Take(3));
 
 
         }
