@@ -24,6 +24,7 @@ namespace WITTracker.DAL
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Grade> Grades { get; set; }
+        public DbSet<Update> Updates { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,6 +37,11 @@ namespace WITTracker.DAL
             modelBuilder.Entity<Student>()
                 .HasRequired(s => s.Teacher)
                 .WithMany(t => t.StudentsTeaching)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Update>()
+                .HasRequired(e => e.Author)
+                .WithMany(a => a.Updates)
                 .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);

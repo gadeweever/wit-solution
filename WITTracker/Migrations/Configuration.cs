@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using WITTracker.Models;
-
-
-namespace WITTracker.DAL
+namespace WITTracker.Migrations
 {
-    public class WITInit : System.Data.Entity.DropCreateDatabaseAlways<WITContext>
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+    using WITTracker.Models;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<WITTracker.DAL.WITContext>
     {
-        protected override void Seed(WITContext context)
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+            ContextKey = "WITTracker.DAL.WITContext";
+        }
+
+        protected override void Seed(WITTracker.DAL.WITContext context)
         {
             var buildings = new List<Building>
             {
@@ -47,7 +53,7 @@ namespace WITTracker.DAL
             };
             subjects.ForEach(s => context.Subjects.Add(s));
             context.SaveChanges();
-            
+
             var teachers = new List<Teacher>
             {
                 new Teacher{FirstName = "Gamal",LastName = "DeWeever", 
@@ -104,13 +110,18 @@ namespace WITTracker.DAL
             };
             posts.ForEach(p => context.Updates.Add(p));
             context.SaveChanges();
+            //  This method will be called after migrating to the latest version.
 
-            
-
-           
-
-
-
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data. E.g.
+            //
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
         }
     }
 }

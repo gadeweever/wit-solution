@@ -26,6 +26,7 @@ namespace WITTracker.Models
 
         
         public virtual ICollection<Student> StudentsTeaching { get; set; }
+        public virtual ICollection<Update> Updates { get; set; }
         public virtual Building Location { get; set; }
     }
 }
