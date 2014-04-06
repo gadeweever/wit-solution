@@ -18,6 +18,21 @@ namespace WITTracker
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "ShowTeacher",
+                url: "Teacher/Details/{id}",
+                defaults: new { id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Email",
+                url: "Email/Index",
+                defaults: new { email = UrlParameter.Optional }
+            );
+
+
+
         }
     }
 }

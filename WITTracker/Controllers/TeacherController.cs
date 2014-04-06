@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WITTracker.DAL;
 using WITTracker.Models;
+using WITTracker.Runtime;
 
 namespace WITTracker.Controllers
 {
@@ -39,6 +40,9 @@ namespace WITTracker.Controllers
             {
                 return HttpNotFound();
             }
+
+            Globals.Email = teacher.Email;
+            ViewBag.email = teacher.Email;
             return View(teacher);
         }
 

@@ -161,6 +161,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BuildingController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -191,6 +192,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Photos\splash.jpg" />
     <Content Include="Photos\splash2.jpg" />
+    <Content Include="Photos\UnknownPerson-01.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -255,6 +257,7 @@
     <Content Include="Views\Room\Details.cshtml" />
     <Content Include="Views\Room\Edit.cshtml" />
     <Content Include="Views\Room\Index.cshtml" />
+    <Content Include="Views\Email\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,6 +9,7 @@ namespace WITTracker.Runtime
     {
 
         public static int _compositeAverage;
+        public static string _toEmail;
         
 
         public static int CompositeAverage
@@ -21,6 +22,18 @@ namespace WITTracker.Runtime
             set
             {
                 _compositeAverage = value;
+            }
+        }
+
+        public static string Email
+        {
+            get
+            {
+                return _toEmail;
+            }
+            set
+            {
+                _toEmail = value;
             }
         }
     }

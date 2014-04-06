@@ -39,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Teacher.FirstName) @Html.DisplayFor(modelItem => item.Teacher.LastName)
+            @Html.RouteLink((item.Teacher.FirstName + " " + item.Teacher.LastName), "ShowTeacher", new {id=item.TeacherID})
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

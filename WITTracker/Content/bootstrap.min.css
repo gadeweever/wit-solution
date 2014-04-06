@@ -1850,6 +1850,7 @@ textarea.input-lg {
     padding: 6px 12px;
     margin-bottom: 0;
     font-size: 14px;
+   
     font-weight: normal;
     line-height: 1.428571429;
     text-align: center;
@@ -1915,7 +1916,8 @@ textarea.input-lg {
 
 .btn-primary {
     color: #fff;
-    background-color: #428bca;
+    text-decoration:none;
+    background-color: rgba(255,255,255,0.9);
     border-color: #357ebd;
 }
 
@@ -4517,6 +4519,29 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
     .jumbotron p {
         line-height: 1.4;
     }
+
+.jumbotron2 {
+    padding: 30px;
+    margin-bottom: 30px;
+    height: 400px;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+    background-image: url(../Photos/UnknownPerson-01.jpg);
+    background-repeat:no-repeat;
+    color: inherit;
+    background-color: #eee;
+    
+}
+    .jumbotron2 h1 {
+        line-height: 1;
+        color: inherit;
+    }
+
+    .jumbotron2 p {
+        line-height: 1.4;
+    }
+
 
 .container .jumbotron {
     border-radius: 6px;

@@ -1,58 +1,40 @@
 ﻿@model WITTracker.Models.Teacher
 
-@{
-    ViewBag.Title = "Details";
-}
+<div class="jumbotron2">
+    <h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>Teacher</h4>
+        <hr />
+        <dl>
+            <dt>
+                Teaches in
+            </dt>
 
-<div>
-    <h4>Teacher</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Location.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location.Name)
-        </dd>
+            <dt>
+                Preferred Subject
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PreferenceSubject.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PreferenceSubject.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PreferenceSubject.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+            <dd>
+                @Html.RouteLink((ViewBag.email as string), "Email", null)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Teachers", "Index")
 </p>
