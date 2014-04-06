@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WITTracker.DAL;
 using WITTracker.Models;
+using WITTracker.Runtime;
 
 namespace WITTracker.Controllers
 {
@@ -25,6 +26,8 @@ namespace WITTracker.Controllers
         // GET: Student/Details/5
         public ActionResult Details(int? id)
         {
+            
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -34,6 +37,9 @@ namespace WITTracker.Controllers
             {
                 return HttpNotFound();
             }
+            var students = db.Students.Include(s => s.Teacher);
+            ComputeAverage(students.ToList());
+            ViewBag.Avg = Globals.CompositeAverage;
             return View(student);
         }
 
@@ -128,6 +134,15 @@ namespace WITTracker.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void ComputeAverage(List<Student> students)
+        {
+            int total = 0;
+            foreach (Student student in students)
+                total += student.Grades.ElementAt(5).Score;
+
+            Globals.CompositeAverage = total / students.Count;
         }
     }
 }
