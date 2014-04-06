@@ -1,11 +1,19 @@
 ﻿@model IEnumerable<WITTracker.Models.Student>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Students";
 }
 
-<h2>Index</h2>
-
+<h2>Students</h2>
+<div class="jumbotron4">
+    <h1>Class Averages</h1>
+    <p class="lead">Composite - @ViewBag.CompositeAverage</p>
+    <p>English - @ViewBag.EnglishAverage</p>
+    <p>Math - @ViewBag.MathAverage</p>
+    <p>Writing - @ViewBag.WritingAverage</p>
+    <p>Science - @ViewBag.ScienceAverage</p>
+    <p>Reading - @ViewBag.ReadingAverage</p>
+</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -16,6 +24,7 @@
            <input type="submit" value="search" class="btn btn-default" /></p>
    }
 </p>
+
 <table class="table">
     <tr>
         <th>

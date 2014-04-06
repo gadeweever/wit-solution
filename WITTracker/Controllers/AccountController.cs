@@ -65,6 +65,8 @@ namespace WITTracker.Controllers
                 {
                     await SignInAsync(user, model.RememberMe);
                     GetTeacherByEmail(model.Email);
+                    Globals.Email = model.Email;
+                    ViewBag.email = Globals.Email;
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -563,14 +565,14 @@ namespace WITTracker.Controllers
         {
             
             List<Teacher> teachers = db.Teachers.ToList();
-            Globals.AccountID = teachers.Find(
+            Teacher found = teachers.Find(
                 delegate(Teacher t)
                 {
                     return t.Email == email;
-                }).ID;
+                });
+            Globals.TeacherName = found.FirstName;
 
-            Console.WriteLine(Globals.AccountID);
-            
+           
 
         }
         #endregion

@@ -20,12 +20,13 @@ namespace WITTracker.Controllers
         public ActionResult Index(string searchQuery)
         {
             var students = db.Students.Include(s => s.Teacher);
+            
 
             if(!String.IsNullOrEmpty(searchQuery))
             {
                 students = students.Where(s => (s.FirstName + s.LastName).Contains(searchQuery));
             }
-
+            ComputeAverages(students.ToList());
             return View(students.ToList());
         }
 
@@ -44,8 +45,8 @@ namespace WITTracker.Controllers
                 return HttpNotFound();
             }
             var students = db.Students.Include(s => s.Teacher);
-            ComputeAverage(students.ToList());
-            ViewBag.Avg = Globals.CompositeAverage;
+
+            SetViewBag();
             return View(student);
         }
 
@@ -142,13 +143,36 @@ namespace WITTracker.Controllers
             base.Dispose(disposing);
         }
 
-        private void ComputeAverage(List<Student> students)
+        private void ComputeAverages(List<Student> students)
+        {   
+            Globals.CompositeAverage = ComputeAverageOfElement(students, 5);
+            Globals.EnglishAverage = ComputeAverageOfElement(students, 0);
+            Globals.MathAverage = ComputeAverageOfElement(students, 1);
+            Globals.WritingAverage = ComputeAverageOfElement(students, 2);
+            Globals.ReadingAverage = ComputeAverageOfElement(students, 3);
+            Globals.ScienceAverage = ComputeAverageOfElement(students, 4);
+
+            SetViewBag();
+
+        }
+
+        private int ComputeAverageOfElement(List<Student> students, int at)
         {
             int total = 0;
             foreach (Student student in students)
-                total += student.Grades.ElementAt(5).Score;
+                total += student.Grades.ElementAt(at).Score;
 
-            Globals.CompositeAverage = total / students.Count;
+            return total / students.Count;
+        }
+
+        private void SetViewBag()
+        {
+            ViewBag.CompositeAverage = Globals.CompositeAverage;
+            ViewBag.EnglishAverage = Globals.EnglishAverage;
+            ViewBag.MathAverage = Globals.MathAverage;
+            ViewBag.WritingAverage = Globals.WritingAverage;
+            ViewBag.ReadingAverage = Globals.ReadingAverage;
+            ViewBag.ScienceAverage = Globals.ScienceAverage;
         }
     }
 }

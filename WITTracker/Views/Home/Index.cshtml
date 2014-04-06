@@ -4,10 +4,18 @@
 }
 
 <div class="jumbotron">
+@if (!Request.IsAuthenticated)
+{ 
     <h1>Welcome!</h1>
-    <p class="lead">You've reached A great student and teacher portal for keeping track of everything!</p>
+    <p class="lead">You've reached a great student and teacher portal for keeping track of everything!</p>
+    
     <p class="btn btn-primary btn-lg">@Html.ActionLink("I'm a student","Index","Teacher")</p>
-    <p class="btn btn-primary btn-lg">@Html.ActionLink("I'm a Teacher", "Index", "Student")</p>
+    <p class="btn btn-primary btn-lg">@Html.ActionLink("I'm a Teacher", "Login", "Account")</p>
+}
+else
+{ 
+    <h1>Welcome, @ViewBag.Name!</h1>
+}
 </div>
 
 <hr />

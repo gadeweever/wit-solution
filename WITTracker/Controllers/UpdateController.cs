@@ -54,7 +54,7 @@ namespace WITTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                update.TeacherID = Globals.AccountID;
+                //update.TeacherID = Globals.AccountID;
                 update.TimePosted = DateTime.Now;
                 db.Updates.Add(update);
                 db.SaveChanges();

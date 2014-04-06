@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WITTracker.DAL;
+using WITTracker.Runtime;
 
 namespace WITTracker.Controllers
 {
@@ -14,6 +15,7 @@ namespace WITTracker.Controllers
         public ActionResult Index()
         {
             var updates = db.Updates;
+            ViewBag.Name = Globals.TeacherName;
             if (updates.ToList().Count <= 3)
                 return View(updates.ToList());
             else
