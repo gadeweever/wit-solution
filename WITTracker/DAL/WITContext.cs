@@ -25,5 +25,21 @@ namespace WITTracker.DAL
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Grade> Grades { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Room>()
+                .HasRequired(r => r.RoomLocation)
+                .WithMany(b => b.Rooms)
+                //.HasForeignKey(r => r.BuildingID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Student>()
+                .HasRequired(s => s.Teacher)
+                .WithMany(t => t.StudentsTeaching)
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
