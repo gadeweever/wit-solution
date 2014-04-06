@@ -4,7 +4,67 @@
 
 <script type="text/javascript">
     function GetMap() {
-        var map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), { credentials: "Amp-vKtzFTPqWw1QsJzAH5lW8S89T4maD7gZtjJpKG-uKFLCA0FnPDYkniQmUS2-" });
+        var map = new Microsoft.Maps.Map(document.getElementById("mapDiv"),
+            {
+                credentials: "Amp-vKtzFTPqWw1QsJzAH5lW8S89T4maD7gZtjJpKG-uKFLCA0FnPDYkniQmUS2-",
+                center: new Microsoft.Maps.Location(41.79, -87.60),
+                mapTypeId: Microsoft.Maps.MapTypeId.road,
+                zoom: 16
+            });
+
+        var loc = new Microsoft.Maps.Location(41.7912, -87.5999);
+        var loc2 = new Microsoft.Maps.Location(41.787713, -87.59846);
+        var loc3 = new Microsoft.Maps.Location(41.789, -87.601);
+
+        var pin = new Microsoft.Maps.Pushpin(loc);
+        var pin2 = new Microsoft.Maps.Pushpin(loc2);
+        var pin3 = new Microsoft.Maps.Pushpin(loc3);
+        map.entities.push(pin);
+        map.entities.push(pin2);
+        map.entities.push(pin3);
+
+        pinInfobox = new Microsoft.Maps.Infobox(pin.getLocation(),
+                {
+                    title: 'The Regenstien Library',
+                    description: '1080 E 57th St, Chicago, IL 60637',
+                    visible: false,
+                    offset: new Microsoft.Maps.Point(0, 15)
+                });
+
+        pinInfobox2 = new Microsoft.Maps.Infobox(pin2.getLocation(),
+                {
+                    title: 'Harper Library',
+                    description: '1116 E 59th St, IL 60637',
+                    visible: false,
+                    offset: new Microsoft.Maps.Point(0, 15)
+                });
+
+        pinInfobox3 = new Microsoft.Maps.Infobox(pin3.getLocation(),
+                {
+                    title: 'Cobb Hall',
+                    description: '5907 S Ellis Ave, Chicago, IL 60637',
+                    visible: false,
+                    offset: new Microsoft.Maps.Point(0, 15)
+                });
+        // Add handler for the pushpin click event.
+        Microsoft.Maps.Events.addHandler(pin, 'click', displayInfobox);
+
+        // Hide the infobox when the map is moved.
+        Microsoft.Maps.Events.addHandler(map, 'viewchange', hideInfobox);
+
+        function displayInfobox(e) {
+            pinInfobox.setOptions({ visible: true });
+        }
+
+        function hideInfobox(e) {
+            pinInfobox.setOptions({ visible: false });
+        }
+
+
+        map.entities.push(pinInfobox);
+        map.entities.push(pinInfobox2);
+        map.entities.push(pinInfobox3);
+
     }
 </script>
 
@@ -18,9 +78,12 @@
 <h2>Index</h2>
 <body onload="GetMap();">
     <div id="mapDiv" class='mapDivStyle'></div>
+    <br />
+    <hr />
+    <br />
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @*@Html.ActionLink("Create New", "Create")*@
         @using (Html.BeginForm())
         {
         <p>

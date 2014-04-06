@@ -27,7 +27,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
     margin-left: auto;
     margin-right: auto;
     position:relative;
-    width:400px;
+    border-width:2px;
+    width:600px;
     height:400px;
 }
 
