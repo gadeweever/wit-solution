@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WITTracker.DAL;
 
 namespace WITTracker.Controllers
 {
     public class HomeController : Controller
     {
+        private WITContext db = new WITContext();
+
         public ActionResult Index()
         {
-            return View();
+            var updates = db.Updates;
+            return View(updates.ToList());
 
 
         }

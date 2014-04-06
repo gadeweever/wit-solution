@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<WITTracker.Models.Update>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -8,6 +8,25 @@
     <p class="lead">You've reached A great student and teacher portal for keeping track of everything!</p>
     <p class="btn btn-primary btn-lg">@Html.ActionLink("I'm a student","Index","Teacher")</p>
     <p class="btn btn-primary btn-lg">@Html.ActionLink("I'm a Teacher", "Index", "Student")</p>
+</div>
+
+<hr />
+
+<h1>News Feed</h1>
+
+@foreach (var item in Model)
+{
+    <div class="jumbotron3">
+        <h1>@Html.DisplayFor(model => item.Header)</h1>
+        <p class="lead">@Html.DisplayFor(model => item.Text)</p>
+        <p>@Html.DisplayFor(model => item.Author.FirstName)</p>
+        <p>@Html.DisplayFor(model => item.TimePosted)</p>
+
+    </div>
+
+}
+<div class="jumbotron3">
+
 </div>
 
 

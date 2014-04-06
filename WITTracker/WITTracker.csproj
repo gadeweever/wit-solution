@@ -172,7 +172,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Building.cs" />
     <Compile Include="Models\Grade.cs" />
@@ -195,6 +194,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Photos\splash.jpg" />
     <Content Include="Photos\splash2.jpg" />
+    <Content Include="Photos\splash3.jpg" />
     <Content Include="Photos\UnknownPerson-01.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

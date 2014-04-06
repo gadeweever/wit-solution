@@ -4512,7 +4512,7 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
     font-size: 21px;
     font-weight: 200;
     line-height: 2.1428571435;
-    background-image: url(../Photos/splash2.png);
+    background-image: url(../Photos/splash3.jpg);
     background-size: 1900px;
     background-repeat:no-repeat;
     color: inherit;
@@ -4548,6 +4548,27 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
     }
 
     .jumbotron2 p {
+        line-height: 1.4;
+    }
+
+.jumbotron3 {
+    padding: 30px;
+    margin-bottom: 5px;
+    height: 250px;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+    background-repeat:no-repeat;
+    color: inherit;
+    background-color: #ccc;
+    
+}
+    .jumbotron3 h1 {
+        line-height: 1;
+        color: inherit;
+    }
+
+    .jumbotron3 p {
         line-height: 1.4;
     }
 
