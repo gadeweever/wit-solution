@@ -24,12 +24,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 }
 
 .mapDivStyle{
-    margin-left: auto;
-    margin-right: auto;
+    float:left;
     position:relative;
     border-width:2px;
     width:600px;
     height:400px;
+    margin-bottom:30px;
 }
 
 audio, canvas, video {
@@ -4514,6 +4514,9 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
     left:0;
     z-index:-1;
 }
+.domargin{
+    margin-top: 30px;
+}
 
 .jumbotron {
     padding: 30px;
@@ -4539,6 +4542,29 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
         line-height: 1.4;
     }
 
+.slim-jumbotron {
+    padding: 30px;
+    margin-bottom: 30px;
+    height: 400px;
+    width:520px;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+
+    color: inherit;
+    background-color: #eee;
+    
+}
+
+    .slim-jumbotron h1 {
+        line-height: 1;
+        color: inherit;
+    }
+
+    .slim-jumbotron p {
+        line-height: 1.4;
+    }
+
 .jumbotron2 {
     padding: 30px;
     margin-bottom: 30px;
@@ -4549,7 +4575,9 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
     background-image: url(../Photos/UnknownPerson-01.jpg);
     background-repeat:no-repeat;
     color: inherit;
+    border-radius: 5px;
     background-color: #eee;
+    
     
 }
     .jumbotron2 h1 {

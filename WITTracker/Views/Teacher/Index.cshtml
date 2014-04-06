@@ -72,12 +72,13 @@
 @model IEnumerable<WITTracker.Models.Teacher>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Class Info";
 }
 
-<h2>Index</h2>
+<h2>Classes and Teachers</h2>
 <body onload="GetMap();">
     <div id="mapDiv" class='mapDivStyle'></div>
+    <div class="slim-jumbotron"style="float:right;"><h1>These are our current locations!</h1></div>
     <br />
     <hr />
     <br />
@@ -86,7 +87,8 @@
         @*@Html.ActionLink("Create New", "Create")*@
         @using (Html.BeginForm())
         {
-        <p>
+        <p class="domargin">
+            <hr />
             Search Teacher: @Html.TextBox("searchQuery") <br />
             <input type="submit" value="search" class="btn btn-default" />
         </p>
