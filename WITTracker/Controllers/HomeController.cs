@@ -17,9 +17,18 @@ namespace WITTracker.Controllers
             var updates = db.Updates;
             ViewBag.Name = Globals.TeacherName;
             if (updates.ToList().Count <= 3)
-                return View(updates.ToList());
+            {
+                var list = updates.ToList();
+                list.Reverse();
+                return View(list);
+            }
             else
-                return View(updates.ToList().GetRange(updates.ToList().Count-3, 3));
+            {
+                var list = updates.ToList().GetRange(updates.ToList().Count - 3, 3);
+                list.Reverse();
+                return View(list);
+            }
+                
 
 
         }

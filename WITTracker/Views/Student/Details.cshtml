@@ -4,27 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Students</h2>
+<h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
 
     <div>
-        <h4>Student</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.FirstName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
 
             <dt>
                 Teacher
@@ -38,36 +22,58 @@
                 Current Grades
             </dt>
             <dd>
-                <table class="table">
-                    <tr>
-                        <th>Subject</th>
-                        <th>Score</th>
-
-                    </tr>
-                    @foreach (var item in Model.Grades)
-                    {
+                <div class="right">
+                    <table class="table" style="width:70%;float:left;">
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.GradeSubject.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Score)
-                            </td>
+                            <th>Subject</th>
+                            <th>Score</th>
+
                         </tr>
-                    }
-                    <tr>
-                        <th>Program Averages</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </table>
+                        @foreach (var item in Model.Grades)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GradeSubject.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Score)
+                                </td>
+                            </tr>
+                        }
+
+                        <tr>
+                    </table>
+                </div>
+                <div class="left">
+                    <table class="table" style="width:30%;float:right;">
+                        <tr>
+                            <th>Program Averages</th>
+                        </tr>
+                        <tr>
+                            <td>@ViewBag.CompositeAverage</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewBag.EnglishAverage</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewBag.MathAverage</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewBag.WritingAverage</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewBag.ReadingAverage</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewBag.ScienceAverage</td>
+                        </tr>
+                    </table>
+                </div>
 
 
             </dd>
 
         </dl>
-        @ViewBag.Avg
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

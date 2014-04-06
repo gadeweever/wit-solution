@@ -199,6 +199,16 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+table2 {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 80%;
+}
+table3 {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 20%
+}
 
 @media print {
     * {
@@ -4120,7 +4130,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
 .navbar-inverse {
-    background-color: #222;
+    background-color: rgba(240, 240, 240, 1);
     border-color: #080808;
 }
 
@@ -4129,7 +4139,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
         .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-            color: #fff;
+            color: #000;
             background-color: transparent;
         }
 
@@ -4142,7 +4152,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
         .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
-            color: #fff;
+            color: #000;
             background-color: transparent;
         }
 

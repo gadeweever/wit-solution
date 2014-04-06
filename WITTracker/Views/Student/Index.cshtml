@@ -7,16 +7,14 @@
 <h2>Students</h2>
 <div class="jumbotron4">
     <h1>Class Averages</h1>
-    <p class="lead">Composite - @ViewBag.CompositeAverage</p>
-    <p>English - @ViewBag.EnglishAverage</p>
-    <p>Math - @ViewBag.MathAverage</p>
-    <p>Writing - @ViewBag.WritingAverage</p>
-    <p>Science - @ViewBag.ScienceAverage</p>
-    <p>Reading - @ViewBag.ReadingAverage</p>
+    <h2>Composite - @ViewBag.CompositeAverage</h2>
+    <h3>English - @ViewBag.EnglishAverage</h3>
+    <h3>Math - @ViewBag.MathAverage</h3>
+    <h3>Writing - @ViewBag.WritingAverage</h3>
+    <h3>Science - @ViewBag.ScienceAverage</h3>
+    <h3>Reading - @ViewBag.ReadingAverage</h3>
 </div>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<hr />
 <p>
    @using (Html.BeginForm())
    {
