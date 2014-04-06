@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WITTracker.DAL;
 using WITTracker.Models;
+using WITTracker.Runtime;
 
 namespace WITTracker.Controllers
 {
@@ -53,6 +54,7 @@ namespace WITTracker.Controllers
         {
             if (ModelState.IsValid)
             {
+                update.TeacherID = Globals.AccountID;
                 db.Updates.Add(update);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -129,5 +131,6 @@ namespace WITTracker.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using WITTracker.Models;
+using WITTracker.Runtime;
+using WITTracker.DAL;
 
 namespace WITTracker.Controllers
 {
@@ -18,6 +20,7 @@ namespace WITTracker.Controllers
     public class AccountController : Controller
     {
         private ApplicationUserManager _userManager;
+        private WITContext db = new WITContext();
 
         public AccountController()
         {
@@ -61,6 +64,7 @@ namespace WITTracker.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
+                    GetTeacherByEmail(model.Email);
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -553,6 +557,21 @@ namespace WITTracker.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+        }
+
+        private void GetTeacherByEmail(string email)
+        {
+            
+            List<Teacher> teachers = db.Teachers.ToList();
+            Globals.AccountID = teachers.Find(
+                delegate(Teacher t)
+                {
+                    return t.Email == email;
+                }).ID;
+
+            Console.WriteLine(Globals.AccountID);
+            
+
         }
         #endregion
     }
