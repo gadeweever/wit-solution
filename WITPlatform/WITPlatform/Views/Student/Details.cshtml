@@ -9,6 +9,8 @@
 <div>
     <h4>Student</h4>
 	<hr />
+
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -44,7 +46,14 @@
 
     </dl>
 </div>
+
+<div>
+    <section>
+        <article>
+            
+        </article>
+    </section>
+</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

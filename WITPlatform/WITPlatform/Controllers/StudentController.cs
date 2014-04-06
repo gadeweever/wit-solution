@@ -7,31 +7,35 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WITPlatform.Models;
+using WITPlatform.DAL;
 
 namespace WITPlatform.Controllers
 {
     public class StudentController : Controller
     {
-        private StudentDBContext db = new StudentDBContext();
+        private TutorContext db = new TutorContext();
 
         // GET: /Student/
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            return View(db.Student.ToList());
         }
 
         // GET: /Student/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = db.Student.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.Average = GetCompositeAverage(db.Student.ToList());
+            ViewBag.Composite = GetCompositeScore(student);
             return View(student);
         }
 
@@ -46,11 +50,11 @@ namespace WITPlatform.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,Name,Grade")] Student student)
+        public ActionResult Create([Bind(Include="ID,Name,Email,PhoneNumber")] Student student)
         {
             if (ModelState.IsValid)
             {
-                db.Students.Add(student);
+                db.Student.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +69,7 @@ namespace WITPlatform.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = db.Student.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -78,7 +82,7 @@ namespace WITPlatform.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,Name,Grade")] Student student)
+        public ActionResult Edit([Bind(Include="ID,Name,Grade,Email,PhoneNumber")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +100,7 @@ namespace WITPlatform.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = db.Student.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -109,8 +113,8 @@ namespace WITPlatform.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
+            Student student = db.Student.Find(id);
+            db.Student.Remove(student);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -123,5 +127,39 @@ namespace WITPlatform.Controllers
             }
             base.Dispose(disposing);
         }
+
+        private int GetCompositeAverage(List<Student> students)
+        {
+            int avg = 0;
+            //List<Student> students = db.Student.ToList();
+            foreach (Student student in students)
+            {
+                avg += student.Grade;
+            }
+
+            return avg / students.Count;
+        }
+
+        private int GetCompositeScore(Student mystudent)
+        {
+            int totes = 0;
+            List<Grade>grades;
+            try
+            {
+                grades = mystudent.ACTGrades.ElementAt(0).GetGrades();
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                return -1;
+            }
+               
+
+            foreach (Grade grade in grades)
+                totes += grade.Score;
+
+            return totes / mystudent.ACTGrades.Count;
+        }
+
+           
     }
 }
