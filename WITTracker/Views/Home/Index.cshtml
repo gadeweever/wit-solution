@@ -1,12 +1,17 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Home Page";
 }
+
 <div class="jumbotron">
     <h1>Welcome!</h1>
     <p class="lead">You've reached A great student and teacher portal for keeping track of everything!</p>
-    <p class="btn btn-primary btn-lg">@Html.ActionLink("I'm a student","Index","Student")</p>
-    <p class="btn btn-primary btn-lg">@Html.ActionLink("I'm a Teacher", "Index", "Teacher")</p>
+    <p class="btn btn-primary btn-lg">@Html.ActionLink("I'm a student","Index","Teacher")</p>
+    <p class="btn btn-primary btn-lg">@Html.ActionLink("I'm a Teacher", "Index", "Student")</p>
 </div>
+
+
+
 
 <!--<div class="row">b
     <div class="col-md-4">
