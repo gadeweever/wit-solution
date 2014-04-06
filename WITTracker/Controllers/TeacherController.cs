@@ -16,9 +16,14 @@ namespace WITTracker.Controllers
         private WITContext db = new WITContext();
 
         // GET: Teacher
-        public ActionResult Index()
+        public ActionResult Index(string searchQuery)
         {
             var teachers = db.Teachers.Include(t => t.Location).Include(t => t.PreferenceSubject);
+
+            if(!string.IsNullOrEmpty(searchQuery))
+            {
+                teachers = teachers.Where(s => (s.FirstName + s.LastName).Contains(searchQuery));
+            }
             return View(teachers.ToList());
         }
 
